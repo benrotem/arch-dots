@@ -3,7 +3,7 @@ bin
 doc
 dow
 other
-src
+proj
 tmp
 
 # Symlinks
@@ -11,3 +11,15 @@ amme2000
 amme2500
 mech2400
 mtrx2700
+siri
+
+# Other
+.bash_history
+.cache
+.dots.git
+.gazebo
+.ros
+.rviz2
+.ssh
+.sudo_as_admin_successful
+.Xauthority
