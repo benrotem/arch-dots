@@ -41,4 +41,3 @@ alias la='ls -A'
 alias grep='grep --color=auto'
 alias c='clear'
 alias v='nvim'
-alias today="echo $1 >> $HOME/tmp/today.txt"
