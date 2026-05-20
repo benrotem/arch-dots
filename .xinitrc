@@ -1,1 +1,5 @@
+while xsetroot -name "`date +%r` | `cat /sys/class/power_supply/BAT0/capacity`% "
+do
+	sleep 1
+done &
 exec dwm
