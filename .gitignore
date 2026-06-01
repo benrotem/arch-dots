@@ -17,9 +17,13 @@ siri
 .bash_history
 .cache
 .dots.git
+.fehbg
 .gazebo
+.lesshst
+.local
 .ros
 .rviz2
 .ssh
 .sudo_as_admin_successful
 .Xauthority
+.viminfo
