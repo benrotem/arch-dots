@@ -235,11 +235,11 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "r", function () awful.spawn(browser) end,
               {description = "web browser", group = "Launchers"}),
     awful.key({ modkey,           }, "d", function() menubar.show() end,
-              {description = "open the menubar to launch apps", group = "Launchers"})
+              {description = "open menubar", group = "Launchers"}),
 
     -- Execute
-    awful.key({ modkey },            "q",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "open the run prompt", group = "Execute"}),
+    awful.key({ modkey,           }, "q", function () awful.screen.focused().mypromptbox:run() end,
+              {description = "open run prompt", group = "Execute"}),
 
     -- Default stuff that awesome gave no title for
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -329,7 +329,7 @@ globalkeys = gears.table.join(
                     history_path = awful.util.get_cache_dir() .. "/history_eval"
                   }
               end,
-              {description = "lua execute prompt", group = "awesome"}),
+              {description = "lua execute prompt", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
