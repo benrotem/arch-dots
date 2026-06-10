@@ -233,6 +233,8 @@ globalkeys = gears.table.join(
     -- Launchers
     awful.key({ modkey,           }, "e", function () awful.spawn(terminal) end,
               {description = "launch terminal", group = "launcher"}),
+    awful.key({ modkey,           }, "r", function () awful.spawn(browser) end,
+              {description = "launch web browser", group = "launcher"}),
 
     -- Default stuff that awesome gave no title for
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
