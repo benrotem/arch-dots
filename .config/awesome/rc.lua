@@ -252,6 +252,18 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "o", function () awful.screen.focus_relative( 1) end,
               {description = "focus next", group = "!Screens"}),
 
+    -- Volume (requires alsa-utils)
+    awful.key({                   }, "XF86AudioLowerVolume", function () awful.spawn("amixer -q sset Master 5%-") end,
+              {description = "lower 5%", group = "Volume"}),
+    awful.key({                   }, "XF86AudioRaiseVolume", function () awful.spawn("amixer -q sset Master 5%+") end,
+              {description = "raise 5%", group = "Volume"}),
+
+    -- Screen Brightness (requires brightnessctl)
+    awful.key({                   }, "XF86MonBrightnessDown", function () awful.spawn("brightnessctl set 5%-") end,
+              {description = "lower 5%", group = "Screen Brightness"}),
+    awful.key({                   }, "XF86MonBrightnessUp", function () awful.spawn("brightnessctl set +5%") end,
+              {description = "raise 5%", group = "Screen Brightness"}),
+
     -- Default stuff that awesome gave no title for
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
