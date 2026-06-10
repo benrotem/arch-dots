@@ -232,9 +232,15 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     -- Launchers
     awful.key({ modkey,           }, "e", function () awful.spawn(terminal) end,
-              {description = "launch terminal", group = "launcher"}),
+              {description = "terminal", group = "Launchers"}),
     awful.key({ modkey,           }, "r", function () awful.spawn(browser) end,
-              {description = "launch web browser", group = "launcher"}),
+              {description = "web browser", group = "Launchers"}),
+    awful.key({ modkey,           }, "d", function() menubar.show() end,
+              {description = "open the menubar to launch apps", group = "Launchers"})
+
+    -- Execute
+    awful.key({ modkey },            "q",     function () awful.screen.focused().mypromptbox:run() end,
+              {description = "open the run prompt", group = "Execute"}),
 
     -- Default stuff that awesome gave no title for
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -258,8 +264,6 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -317,9 +321,6 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
-
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
@@ -330,9 +331,6 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
