@@ -47,10 +47,11 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/ben/.config/awesome/theme.lua")
 
--- This is used later as the default terminal and editor to run.
+-- Set the default apps to run
 terminal = "alacritty"
-editor = os.getenv("EDITOR") or "nano"
+editor = "nvim" or os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
+browser = "qutebrowser"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
