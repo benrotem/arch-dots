@@ -267,7 +267,7 @@ globalkeys = gears.table.join(
     -- This a dummy keybind - it does nothing!
     -- We still include it here, so it is shown on the hotkey help popup.
     -- The actual functionality is implemented with setxkbmap (see Autostart).
-    awful.key({ "Mod1",             }, "Shift", function () end,
+    awful.key({ "Shift",             }, "CapsLock", function () end,
               {description = "switch language", group = "Other"}),
 
     -- Default stuff that awesome gave no title for
@@ -562,5 +562,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.spawn.with_shell("picom --backend glx --corner-radius 18")
 
 -- Load languages and set a keybind to cycle through (requires xorg-setxkbmap)
-awful.spawn.with_shell("setxkbmap -layout us,il -option grp:alt_shift_toggle")
+awful.spawn.with_shell("setxkbmap -layout us,il -option grp:shift_caps_toggle")
 -- }}}
