@@ -210,7 +210,6 @@ awful.screen.connect_for_each_screen(function(s)
         -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
         },
@@ -254,15 +253,22 @@ globalkeys = gears.table.join(
 
     -- Volume (requires alsa-utils)
     awful.key({                   }, "XF86AudioLowerVolume", function () awful.spawn("amixer -q sset Master 5%-") end,
-              {description = "lower 5%", group = "Volume"}),
+              {description = "volume lower 5%", group = "Other"}),
     awful.key({                   }, "XF86AudioRaiseVolume", function () awful.spawn("amixer -q sset Master 5%+") end,
-              {description = "raise 5%", group = "Volume"}),
+              {description = "volume raise 5%", group = "Other"}),
 
     -- Screen Brightness (requires brightnessctl)
     awful.key({                   }, "XF86MonBrightnessDown", function () awful.spawn("brightnessctl set 5%-") end,
-              {description = "lower 5%", group = "Screen Brightness"}),
+              {description = "screen brightness lower 5%", group = "Other"}),
     awful.key({                   }, "XF86MonBrightnessUp", function () awful.spawn("brightnessctl set +5%") end,
-              {description = "raise 5%", group = "Screen Brightness"}),
+              {description = "screen brightness raise 5%", group = "Other"}),
+
+    -- Languages
+    -- This a dummy keybind - it does nothing!
+    -- We still include it here, so it is shown on the hotkey help popup.
+    -- The actual functionality is implemented with setxkbmap (see Autostart).
+    awful.key({ "Mod1",             }, "Shift", function () end,
+              {description = "switch language", group = "Other"}),
 
     -- Default stuff that awesome gave no title for
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -554,4 +560,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- {{{ Autostart
 -- Apply rounded corners to windows (requires picom)
 awful.spawn.with_shell("picom --backend glx --corner-radius 18")
+
+-- Load languages and set a keybind to cycle through (requires xorg-setxkbmap)
+awful.spawn.with_shell("setxkbmap -layout us,il -option grp:alt_shift_toggle")
 -- }}}
