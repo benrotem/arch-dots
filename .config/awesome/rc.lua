@@ -18,6 +18,9 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+-- Vicious widgets library
+local vicious = require("vicious")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -115,6 +118,19 @@ mytextclock_container.bg = "#0099ff"    -- Blue, same as in theme.lua
 mytextclock_container.fg = "#000000"    -- Black, same as in theme.lua
 -- Bound it in a rounded rectangle
 mytextclock_container.shape = gears.shape.rounded_rect
+
+-- Battery widget
+batwidget = wibox.widget.textbox()
+batwidget_container = wibox.container.background(batwidget)
+batwidget_container.bg = "#0099ff"    -- Blue, same as in theme.lua
+batwidget_container.fg = "#000000"    -- Black, same as in theme.lua
+-- Bound it in a rectangle, with only left corners rounded
+left_rounded_rect = function(cr, width, height, radius)
+    gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, radius)
+end
+batwidget_container.shape = left_rounded_rect
+-- Create the vicious battery widget, updating everyminute
+vicious.register(batwidget, vicious.widgets.bat, " $2% ", 61, "BAT0")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -223,6 +239,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
+            batwidget_container,
         },
     }
 end)
