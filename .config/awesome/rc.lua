@@ -108,7 +108,13 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+-- Display time and date string, making sure it updates every second
+mytextclock = wibox.widget.textclock(" %T | %F ", 1)
+mytextclock_container = wibox.container.background(mytextclock)
+mytextclock_container.bg = "#0099ff"    -- Blue, same as in theme.lua
+mytextclock_container.fg = "#000000"    -- Black, same as in theme.lua
+-- Bound it in a rounded rectangle
+mytextclock_container.shape = gears.shape.rounded_rect
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -202,16 +208,21 @@ awful.screen.connect_for_each_screen(function(s)
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
+	-- Don't expand padding, so the middle widget is actually in the middle
+	expand = "none",
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             s.mytaglist,
             s.mypromptbox,
         },
-        -- Middle widget
+        -- Middle widgets
+	{
+	    layout = wibox.layout.fixed.horizontal,
+	    mytextclock_container,
+	},
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
-            mytextclock,
         },
     }
 end)
