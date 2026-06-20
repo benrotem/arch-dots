@@ -1,6 +1,13 @@
 # Dotfiles
 My dotfiles on Arch Linux, with the awesome window manager.
 
+![](./rice.png)
+
+Other key pieces of software which these files configure:
+- Alacritty
+- Neovim
+- Qutebrowser
+
 ## Dependencies
 The following packages _must be installed_ (`rc.lua` will not load without them):
 - `vicious` for the battery widget
