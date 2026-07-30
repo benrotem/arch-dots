@@ -5,11 +5,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Get distro, for multiple purposes below
+distro=$(cat /etc/os-release | grep -oP '(?<=^NAME=")[^"]+')
+
 # Fancy prompt
 function get_distro
 {
-	distro=$(cat /etc/os-release | grep -oP '(?<=^NAME=")[^"]+')
-
 	if [ "$distro" != 'Arch Linux' ]; then
 		flag="\001\e[94m\002[\001\e[95m\002$distro\001\e[94m\002]─\001\e[0m\002"
 	fi
@@ -52,3 +53,11 @@ alias la='ls -A'
 alias grep='grep --color=auto'
 alias c='clear'
 alias v='nvim'
+
+# Easily enter my ubuntu container
+alias ubuntu='distrobox enter ubuntu'
+
+# On Ubuntu, automatically setup ROS2
+if [ "$distro" == 'Ubuntu' ]; then
+	source /opt/ros/jazzy/setup.bash
+fi
