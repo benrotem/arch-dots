@@ -53,6 +53,7 @@ alias la='ls -A'
 alias grep='grep --color=auto'
 alias c='clear'
 alias v='nvim'
+alias g='g++'
 
 # Easily enter my ubuntu container
 alias ubuntu='distrobox enter ubuntu'
