@@ -48,7 +48,7 @@ fi
 
 # Aliases
 alias dfgit='git --git-dir=$HOME/.dots.git --work-tree=$HOME'
-alias ls='ls --color=auto --group-directories-first'
+alias ls='ls --color=auto --group-directories-first -v'
 alias la='ls -A'
 alias grep='grep --color=auto'
 alias tree='tree -C'
