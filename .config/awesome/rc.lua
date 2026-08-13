@@ -110,31 +110,36 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
--- Create a textclock widget
--- Display time and date string, making sure it updates every second
-mytextclock = wibox.widget.textclock("%T | %F", 1)
+-- Clock widget
+-- Display time and date string, update every second
+clock = wibox.widget.textclock("%T | %F", 1)
+
 -- Pad with a margin
-mytextclock_container = wibox.container.margin(mytextclock, 13, 13, 0, 0)
-mytextclock_container = wibox.container.background(mytextclock_container)
-mytextclock_container.bg = "#0099ff"    -- Blue, same as in theme.lua
-mytextclock_container.fg = "#000000"    -- Black, same as in theme.lua
--- Bound it in a rounded rectangle
-mytextclock_container.shape = gears.shape.rounded_rect
+clockbox = wibox.container.margin(clock, 13, 13, 0, 0)
+
+-- Colour the background and foreground
+clockbox = wibox.container.background(clockbox)
+clockbox.bg = "#0099ff"    -- Blue, same as in theme.lua
+clockbox.fg = "#000000"    -- Black, same as in theme.lua
+
+-- Bound in a rounded rectangle
+clockbox.shape = gears.shape.rounded_rect
 
 -- Battery widget
-batwidget = wibox.widget.textbox()
--- Pad with a margin
-batwidget_container = wibox.container.margin(batwidget, 13, 9, 0, 0)
-batwidget_container = wibox.container.background(batwidget_container)
-batwidget_container.bg = "#0099ff"    -- Blue, same as in theme.lua
-batwidget_container.fg = "#000000"    -- Black, same as in theme.lua
--- Bound it in a rectangle, with only left corners rounded
+bat = wibox.widget.textbox()
+batbox = wibox.container.margin(bat, 13, 9, 0, 0)
+batbox = wibox.container.background(batbox)
+batbox.bg = "#0099ff"
+batbox.fg = "#000000"
+
+-- Bound in a rectangle, with only left corners rounded
 left_rounded_rect = function(cr, width, height, radius)
     gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, radius)
 end
-batwidget_container.shape = left_rounded_rect
--- Create the vicious battery widget, updating everyminute
-vicious.register(batwidget, vicious.widgets.bat, "$2%", 61, "BAT0")
+batbox.shape = left_rounded_rect
+
+-- Register as a vicious battery widget, update every minute
+vicious.register(bat, vicious.widgets.bat, "$2%", 61, "BAT0")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -238,11 +243,11 @@ awful.screen.connect_for_each_screen(function(s)
         -- Middle widgets
 	{
 	    layout = wibox.layout.fixed.horizontal,
-	    mytextclock_container,
+	    clockbox,
 	},
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            batwidget_container,
+            batbox,
         },
     }
 end)
