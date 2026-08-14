@@ -55,6 +55,7 @@ terminal = "alacritty"
 editor = "nvim" or os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 browser = "qutebrowser"
+local doc_viewer = "zathura"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -191,6 +192,8 @@ globalkeys = gears.table.join(
               {description = "terminal", group = "!Launchers"}),
     awful.key({ modkey,           }, "r", function () awful.spawn(browser) end,
               {description = "web browser", group = "!Launchers"}),
+    awful.key({ modkey,           }, "z", function () awful.spawn(doc_viewer) end,
+              {description = "document viewer", group = "!Launchers"}),
     awful.key({ modkey,           }, "d", function () menubar.show() end,
               {description = "open menubar", group = "!Launchers"}),
 
