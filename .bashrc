@@ -52,10 +52,10 @@ alias ls='ls --color=auto --group-directories-first -v'
 alias la='ls -A'
 alias grep='grep --color=auto'
 alias tree='tree -C'
+alias g++='g++ -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -Werror'
 alias latexmk='latexmk -auxdir=./build -pdf'
 alias c='clear'
 alias v='nvim'
-alias g='g++'
 
 # Easily enter my ubuntu container
 alias ubuntu='distrobox enter ubuntu'
