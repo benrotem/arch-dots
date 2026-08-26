@@ -64,3 +64,6 @@ alias ubuntu='distrobox enter ubuntu'
 if [ "$distro" == 'Ubuntu' ]; then
 	source /opt/ros/jazzy/setup.bash
 fi
+
+# Add my scripts directory to PATH
+export PATH="$PATH:$HOME/bin"
