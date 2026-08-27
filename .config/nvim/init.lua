@@ -11,3 +11,9 @@ vim.cmd.colorscheme "catppuccin"
 
 vim.wo.number = true
 vim.wo.relativenumber = true
+
+-- Set tab as two spaces
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
