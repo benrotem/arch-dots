@@ -7,6 +7,21 @@ vim.pack.add {
 require("tree-sitter-manager").setup()
 vim.lsp.enable('clangd')
 
+vim.lsp.config('texlab', {
+  settings = {
+    texlab = {
+      build = {
+        onSave = true,
+      },
+      chktex = {
+        onOpenAndSave = true,
+        onEdit = true,
+      },
+    },
+  },
+})
+vim.lsp.enable('texlab')
+
 vim.cmd.colorscheme "catppuccin"
 
 vim.wo.number = true
