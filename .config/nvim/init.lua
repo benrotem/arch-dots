@@ -10,8 +10,8 @@ require("tree-sitter-manager").setup()
 vim.cmd.colorscheme "catppuccin"
 
 -- Set hybrid line numbers
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Set tab as two spaces
 vim.opt.expandtab = true
