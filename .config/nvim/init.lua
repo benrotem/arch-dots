@@ -21,18 +21,3 @@ vim.opt.softtabstop = 2
 
 -- Language servers
 vim.lsp.enable('clangd')
-
-vim.lsp.config('texlab', {
-  settings = {
-    texlab = {
-      build = {
-        onSave = true,
-      },
-      chktex = {
-        onOpenAndSave = true,
-        onEdit = true,
-      },
-    },
-  },
-})
-vim.lsp.enable('texlab')
